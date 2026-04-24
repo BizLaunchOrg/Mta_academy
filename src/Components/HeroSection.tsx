@@ -1,5 +1,7 @@
 "use client";
 import { Link } from "react-router-dom";
+import { FaBookOpen, FaGraduationCap, FaMedal } from "react-icons/fa";
+import { IoSparkles, IoTrendingUp } from "react-icons/io5";
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-violet-100 via-fuchsia-50 to-indigo-100 overflow-hidden px-6 md:px-10 pt-12 pb-16 flex flex-col justify-between">
@@ -7,11 +9,20 @@ export default function HeroSection() {
       <div className="absolute top-0 right-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-violet-200 blur-[120px] rounded-full opacity-60 pointer-events-none" />
       <div className="absolute -left-20 top-20 w-64 h-64 bg-purple-300/35 blur-3xl rounded-full pointer-events-none" />
       <div className="absolute right-0 bottom-24 w-72 h-72 bg-indigo-200/45 blur-3xl rounded-full pointer-events-none" />
+      <div className="hero-mesh pointer-events-none" />
       <div className="absolute inset-0 pointer-events-none">
-        <span className="hero-float hero-float-1">🎓</span>
-        <span className="hero-float hero-float-2">🎓</span>
-        <span className="hero-float hero-float-3">📘</span>
-        <span className="hero-float hero-float-4">🏅</span>
+        <span className="hero-float hero-float-1">
+          <FaGraduationCap />
+        </span>
+        <span className="hero-float hero-float-2">
+          <FaBookOpen />
+        </span>
+        <span className="hero-float hero-float-3">
+          <FaMedal />
+        </span>
+        <span className="hero-float hero-float-4">
+          <IoSparkles />
+        </span>
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-10">
@@ -96,7 +107,7 @@ export default function HeroSection() {
           <div className="relative w-full lg:w-1/2 flex justify-center">
             {/* Image */}
             <div
-              className="w-full max-w-[520px] rounded-3xl overflow-hidden border border-white/35 shadow-[0_28px_70px_rgba(38,17,79,0.35)]"
+              className="hero-image-wrap w-full max-w-[520px] rounded-3xl overflow-hidden border border-white/35 shadow-[0_28px_70px_rgba(38,17,79,0.35)]"
               style={{
                 background:
                   "linear-gradient(135deg, #2d1b4e 0%, #1a0a2e 40%, #3b1f6b 100%)",
@@ -108,6 +119,16 @@ export default function HeroSection() {
                 alt="MTA Academy hero"
                 className="w-full h-full min-h-[380px] object-cover object-center"
               />
+            </div>
+
+            <div className="absolute top-5 right-2 md:right-0 rounded-xl bg-white/90 backdrop-blur-sm border border-violet-100 px-3 py-2 shadow-md">
+              <p className="text-[10px] uppercase tracking-widest text-violet-500 font-bold">
+                Outcomes
+              </p>
+              <p className="text-sm font-bold text-gray-900 flex items-center gap-1">
+                <IoTrendingUp className="text-violet-600" />
+                Confidence Up
+              </p>
             </div>
 
             {/* TESTIMONIAL CARD */}

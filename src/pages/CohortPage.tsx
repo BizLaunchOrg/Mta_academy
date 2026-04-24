@@ -1,5 +1,8 @@
 import { useState } from "react";
+import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { FaUsers, FaPenNib } from "react-icons/fa";
+import { MdComputer } from "react-icons/md";
 
 type CourseStatus = "ACTIVE" | "ENROLLING" | "UPCOMING";
 
@@ -12,7 +15,7 @@ interface Course {
   availability: string;
   availabilityHighlight?: boolean;
   status: CourseStatus;
-  icon: string;
+  icon: ReactNode;
 }
 
 const courses: Course[] = [
@@ -26,7 +29,7 @@ const courses: Course[] = [
     availability: "Few seats remaining",
     availabilityHighlight: true,
     status: "ACTIVE",
-    icon: "👥",
+    icon: <FaUsers />,
   },
   {
     id: 2,
@@ -37,7 +40,7 @@ const courses: Course[] = [
     nextCohort: "Nov 15th",
     availability: "Open for enrollment",
     status: "ENROLLING",
-    icon: "⌨️",
+    icon: <MdComputer />,
   },
   {
     id: 3,
@@ -48,7 +51,7 @@ const courses: Course[] = [
     nextCohort: "Jan 2026",
     availability: "Waitlist available",
     status: "UPCOMING",
-    icon: "✏️",
+    icon: <FaPenNib />,
   },
 ];
 
@@ -88,7 +91,7 @@ function CourseCard({ course }: { course: Course }) {
           className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl"
           style={{ background: "#f3f0ff" }}
         >
-          <span style={{ filter: "grayscale(0.2)" }}>{course.icon}</span>
+          <span>{course.icon}</span>
         </div>
         <span
           className={`text-xs px-3 py-1 rounded-full ${statusStyles[course.status].badge}`}
