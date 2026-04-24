@@ -7,12 +7,12 @@ import TestimonialSection from "../Components/TestimonialSection";
 
 export default function Home() {
   return (
-    <div className="pt-[90px]">
+    <div className="pt-[108px] bg-gradient-to-b from-white via-violet-50/30 to-white">
       <section id="hero">
         <HeroSection />
       </section>
 
-      <section id="about">
+      <section id="about" className="relative">
         <AboutSection />
       </section>
 
@@ -24,7 +24,7 @@ export default function Home() {
         <BootcampsSection />
       </section>
 
-      <section id="testimonials">
+      <section id="testimonials" className="bg-white">
         <TestimonialSection />
       </section>
         <section id="cta">

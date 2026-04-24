@@ -16,8 +16,7 @@ const testimonials: Testimonial[] = [
     role: "Director of Operations",
     quote:
       "Before MTA, I would stutter in boardroom meetings. After the Executive Presence cohort, I was promoted to Director within 3 months. The ROI is immeasurable.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAM6y0b7Pl7788sQNqrd4DKriRhy9P17Q66Zw8wMCiIHEhC3ItoMBE9fvKxVPn5M2vJOCMcsPwFGLJzFVvKxgj36Ry1EeeELHZGHY996CxJENOdBnJuem75c1babla9ujDFke9NPh0pA5v0O0REQ_SirsAy5igWvbMDzeMygPt31CKPdpX-qVpllA6NGRVRt9Eb323c838WExii4ssA7TfrB7Jq3fWqIEm0uwsJQHKpB5d4A92Pyi6U1IGJnCJ7HPRArL2cssJVupJU",
+    image: "/images/testimonial-mark.jpg",
     alt: "Professional portrait of a middle-aged male executive",
     variant: "default",
   },
@@ -26,8 +25,7 @@ const testimonials: Testimonial[] = [
     role: "Startup Founder",
     quote:
       "The Storytelling Bootcamp was a revelation. It changed how I view marketing and leadership entirely.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCiqX8QFRTOHzvRFv1CljblnCKj8vEA1dKGgodPSeKEBqOUbAE-By0tD8VH-QLBVOMDtFEwJA9poqEbbFn9iYIFcMXaHOrr1Um0anS7b0TQFv8_EB3zsFy1p3E8TebbyF11UKEAoVn_hg70Lb0lEaaH9Fdp17oYsSTeD9xyIO9-BZCId3g0c-wRqNx0Qs75mmGcUHIdbztUgyBx4_rEG-XSUu5EmrXAF6Qw5Ck7KOHckZ02g6783n4imaYrnipnzka8sv20TnfCnLiD",
+    image: "/images/testimonial-elena.jpg",
     alt: "Smiling young woman with glasses",
     variant: "highlight",
   },
@@ -36,8 +34,7 @@ const testimonials: Testimonial[] = [
     role: "Senior Researcher",
     quote:
       "MTA Academy doesn't just teach you how to speak; they teach you how to think. It's intellectual sharpening at its finest.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDzggYOdMP5nJErs-22eV7aFrECv4a-qVHnWe6lUwV3N7om-VHyn-PtWRWrZ9GHeHAOVEW_p06kT-CIQyRu3I-H4Q6R-V5hp_JIRDSZL3wwvtkciFUYXnqtcCs4Dvi40Cxjvp-SpTke2wNU9mGHUt5AmshxwDfdPssuK4PavaoL4Ijw32Rjmi9Xhy7R8P7XEWMkr3GoACJy3Dvp2tja-OHmlq-7zbaJ20Y1PRCOTXozl9rq98jS3RjxqqoRuWra5c5KeS1SOenNgFQE",
+    image: "/images/testimonial-julian.jpg",
     alt: "Professional male portrait with blazer",
     variant: "default",
   },

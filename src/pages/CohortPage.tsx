@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 type CourseStatus = "ACTIVE" | "ENROLLING" | "UPCOMING";
 
@@ -8,13 +9,10 @@ interface Course {
   description: string;
   duration: string;
   nextCohort: string;
-  slotsLeft: string;
-  slotsHighlight?: boolean;
-  capacityPercent: number;
-  capacityLabel: string;
+  availability: string;
+  availabilityHighlight?: boolean;
   status: CourseStatus;
   icon: string;
-  preRegistration?: boolean;
 }
 
 const courses: Course[] = [
@@ -25,10 +23,8 @@ const courses: Course[] = [
       "Master the art of the stage through psychological anchoring and vocal mastery.",
     duration: "8 Weeks",
     nextCohort: "Oct 1st",
-    slotsLeft: "4 remaining",
-    slotsHighlight: true,
-    capacityPercent: 85,
-    capacityLabel: "COHORT CAPACITY: 85% FULL",
+    availability: "Few seats remaining",
+    availabilityHighlight: true,
     status: "ACTIVE",
     icon: "👥",
   },
@@ -39,9 +35,7 @@ const courses: Course[] = [
       "Theoretical computation and practical system design for elite architects.",
     duration: "12 Weeks",
     nextCohort: "Nov 15th",
-    slotsLeft: "12 remaining",
-    capacityPercent: 40,
-    capacityLabel: "COHORT CAPACITY: 40% FULL",
+    availability: "Open for enrollment",
     status: "ENROLLING",
     icon: "⌨️",
   },
@@ -51,13 +45,10 @@ const courses: Course[] = [
     description:
       "Building worlds and narrative loops for next-generation immersive experiences.",
     duration: "6 Weeks",
-    nextCohort: "Jan 2025",
-    slotsLeft: "Waiting List",
-    capacityPercent: 8,
-    capacityLabel: "PRE-REGISTRATION PHASE",
+    nextCohort: "Jan 2026",
+    availability: "Waitlist available",
     status: "UPCOMING",
     icon: "✏️",
-    preRegistration: true,
   },
 ];
 
@@ -73,42 +64,6 @@ const statusStyles: Record<CourseStatus, { badge: string; dot?: string }> = {
     badge: "bg-gray-100 text-gray-500 border border-gray-200 font-semibold",
   },
 };
-
-function CapacityBar({
-  percent,
-  label,
-  preRegistration,
-}: {
-  percent: number;
-  label: string;
-  preRegistration?: boolean;
-}) {
-  return (
-    <div className="mt-auto pt-5">
-      <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-        <div
-          className="h-full rounded-full transition-all duration-700"
-          style={{
-            width: `${percent}%`,
-            background:
-              percent >= 80
-                ? "linear-gradient(90deg, #7c3aed, #6d28d9)"
-                : percent >= 40
-                ? "linear-gradient(90deg, #8b5cf6, #a78bfa)"
-                : "linear-gradient(90deg, #c4b5fd, #ddd6fe)",
-          }}
-        />
-      </div>
-      <p
-        className={`text-xs mt-2 font-semibold tracking-widest ${
-          preRegistration ? "text-gray-400" : "text-violet-600"
-        }`}
-      >
-        {label}
-      </p>
-    </div>
-  );
-}
 
 function CourseCard({ course }: { course: Course }) {
   const [hovered, setHovered] = useState(false);
@@ -163,25 +118,26 @@ function CourseCard({ course }: { course: Course }) {
           <span className="font-bold text-gray-900">{course.nextCohort}</span>
         </div>
         <div className="flex justify-between">
-          <span className="text-gray-500">Slots left:</span>
+          <span className="text-gray-500">Availability:</span>
           <span
             className={
-              course.slotsHighlight
+              course.availabilityHighlight
                 ? "font-bold text-red-500"
                 : "font-bold text-gray-900"
             }
           >
-            {course.slotsLeft}
+            {course.availability}
           </span>
         </div>
       </div>
 
-      {/* Capacity bar */}
-      <CapacityBar
-        percent={course.capacityPercent}
-        label={course.capacityLabel}
-        preRegistration={course.preRegistration}
-      />
+      <Link
+        to="/enrollment"
+        state={{ prefillProgram: course.title, prefillType: "cohort" }}
+        className="mt-auto inline-flex items-center justify-center w-full py-3 rounded-xl bg-violet-600 hover:bg-violet-700 text-white font-semibold transition-colors"
+      >
+        Enroll Now
+      </Link>
     </div>
   );
 }
@@ -189,7 +145,7 @@ function CourseCard({ course }: { course: Course }) {
 export default function CohortPage() {
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-8"
+      className="min-h-screen flex items-start justify-center p-6 md:p-8 pt-4 md:pt-6"
       style={{ background: "#f0eef8" }}
     >
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl w-full">

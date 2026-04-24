@@ -6,9 +6,9 @@ import { MdPsychology, MdRecordVoiceOver } from "react-icons/md";
 
 /* ---------------- TYPES ---------------- */
 interface TimeLeft {
-  days: string;
   hours: string;
   mins: string;
+  secs: string;
 }
 
 interface Cohort {
@@ -29,7 +29,7 @@ const cohorts: Cohort[] = [
     title: "Executive Presence",
     description:
       "Designed for senior leaders. Master authority, body language, and vocal delivery.",
-    startDate: "2025-10-12T00:00:00",
+    startDate: "2026-10-12T00:00:00",
     duration: "8 Weeks",
     slots: "4 Slots Left",
     color: "#6200EE",
@@ -40,7 +40,7 @@ const cohorts: Cohort[] = [
     title: "Public Speaking Mastery",
     description:
       "Conquer any stage using storytelling and persuasive frameworks.",
-    startDate: "2025-11-05T00:00:00",
+    startDate: "2026-11-05T00:00:00",
     duration: "6 Weeks",
     slots: "Limited Slots",
     color: "#4800B2",
@@ -52,12 +52,12 @@ const cohorts: Cohort[] = [
 function getTimeLeft(targetDate: string): TimeLeft {
   const diff = new Date(targetDate).getTime() - Date.now();
 
-  if (diff <= 0) return { days: "00", hours: "00", mins: "00" };
+  if (diff <= 0) return { hours: "00", mins: "00", secs: "00" };
 
   return {
-    days: String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, "0"),
-    hours: String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, "0"),
+    hours: String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, "0"),
     mins: String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, "0"),
+    secs: String(Math.floor((diff / 1000) % 60)).padStart(2, "0"),
   };
 }
 
@@ -74,14 +74,14 @@ const Countdown: React.FC<{ targetDate: string }> = ({ targetDate }) => {
 
   return (
     <div className="flex gap-1 sm:gap-2 text-center">
-      {["days", "hours", "mins"].map((unit, i) => (
+      {["hours", "mins", "secs"].map((unit, i) => (
         <React.Fragment key={unit}>
           <div>
             <span className="block font-black text-base sm:text-lg">
               {timeLeft[unit as keyof TimeLeft]}
             </span>
             <span className="text-[9px] sm:text-[10px] uppercase text-gray-400">
-              {unit === "mins" ? "Min" : unit === "hours" ? "Hrs" : "Days"}
+              {unit === "hours" ? "Hrs" : unit === "mins" ? "Min" : "Sec"}
             </span>
           </div>
           {i < 2 && <div className="font-black text-base sm:text-lg">:</div>}
@@ -158,7 +158,11 @@ const CohortCard: React.FC<{ cohort: Cohort }> = ({ cohort }) => {
 
         {/* ROUTE BUTTON */}
         <Link
-          to={`/apply/${cohort.id}`}
+          to="/enrollment"
+          state={{
+            prefillProgram: cohort.title,
+            prefillType: "cohort",
+          }}
           className="block text-center py-3 rounded-full font-semibold text-white transition-all duration-300 hover:-translate-y-1 active:scale-95 relative overflow-hidden"
           style={{ backgroundColor: cohort.color }}
         >
@@ -188,7 +192,7 @@ const CohortsSection: React.FC = () => {
           </div>
 
           <Link
-            to="/cohorts"
+            to="/programs"
             className="text-sm sm:text-base text-gray-500 hover:text-purple-600 font-semibold transition"
           >
             View All Programs →

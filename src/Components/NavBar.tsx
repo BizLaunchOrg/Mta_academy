@@ -1,112 +1,80 @@
 
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import Button from "./ui/Button";
 
 const navItems = [
-  { label: "Home", href: "#hero" },
-  { label: "About", href: "#about" },
-  { label: "Programs", href: "#programs" },
-  { label: "Bootcamps", href: "#bootcamps" },
-  { label: "Testimonials", href: "#testimonials" },
+  { label: "Home", to: "/" },
+  { label: "Programs", to: "/programs" },
+  { label: "Enrollment", to: "/enrollment" },
 ];
 
 const Navbar: React.FC = () => {
-  const [active, setActive] = useState("#hero");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
-  const indicatorRef = useRef<HTMLSpanElement | null>(null);
-
-  // Scrollspy
   useEffect(() => {
-    const sections = navItems
-      .map((item) => document.querySelector(item.href))
-      .filter(Boolean) as HTMLElement[];
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(`#${entry.target.id}`);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    sections.forEach((sec) => observer.observe(sec));
-    return () => observer.disconnect();
+    const onScroll = () => setIsScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Indicator movement
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      const index = navItems.findIndex((i) => i.href === active);
-      const el = linkRefs.current[index];
-      const container = containerRef.current;
-      const indicator = indicatorRef.current;
-
-      if (!el || !container || !indicator) return;
-
-      const containerRect = container.getBoundingClientRect();
-      const elRect = el.getBoundingClientRect();
-
-      const left = elRect.left - containerRect.left;
-      const width = elRect.width;
-
-      indicator.style.transform = `translateX(${left}px)`;
-      indicator.style.width = `${width}px`;
-    });
-  }, [active]);
-
-  const handleMobileNav = (href: string) => {
-    setActive(href);
+  const handleMobileNav = () => {
     setMenuOpen(false);
   };
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex items-center justify-between">
+      <nav className="fixed top-0 left-0 w-full z-50 px-4 pt-4">
+        <div
+          className={`max-w-6xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between rounded-full backdrop-blur-xl border transition-all duration-300 ${
+            isScrolled
+              ? "bg-[#6200EE]/90 border-violet-300/30 shadow-[0_12px_38px_rgba(62,7,155,0.45)]"
+              : "bg-white/75 border-white/50 shadow-[0_10px_32px_rgba(15,23,42,0.12)]"
+          }`}
+        >
 
           {/* LOGO */}
-          <div className="text-2xl font-black tracking-tighter">
+          <Link
+            to="/"
+            className={`text-2xl font-black tracking-tighter transition-colors ${
+              isScrolled ? "text-white" : "text-[#3B1F6B]"
+            }`}
+          >
             MTA Academy
-          </div>
+          </Link>
 
           {/* DESKTOP LINKS */}
-          <div
-            ref={containerRef}
-            className="hidden md:flex items-center gap-10 relative pb-1"
-          >
-            {navItems.map((item, i) => (
-              <a
-                key={item.href}
-                ref={(el) => (linkRefs.current[i] = el)}
-                href={item.href}
-                className={`font-bold transition-colors ${
-                  active === item.href
-                    ? "text-[#6200EE]"
-                    : "text-slate-600 hover:text-[#6200EE]"
-                }`}
+          <div className="hidden md:flex items-center gap-10 relative pb-1">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.to === "/"}
+                className={({ isActive }) =>
+                  `font-bold transition-colors ${
+                    isScrolled
+                      ? isActive
+                        ? "text-white"
+                        : "text-violet-100 hover:text-white"
+                      : isActive
+                      ? "text-[#6200EE]"
+                      : "text-slate-700 hover:text-[#6200EE]"
+                  }`
+                }
               >
                 {item.label}
-              </a>
+              </NavLink>
             ))}
-
-            {/* INDICATOR */}
-            <span
-              ref={indicatorRef}
-              className="absolute -bottom-1 left-0 h-[2px] bg-[#6200EE] transition-all duration-300 ease-out"
-              style={{ width: 0, transform: "translateX(0px)" }}
-            />
           </div>
 
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-4">
-            <Button >Get Started</Button>
+            <Link to="/enrollment" className="hidden md:inline-flex">
+              <Button>Get Started</Button>
+            </Link>
 
             {/* Hamburger — mobile only */}
             <button
@@ -115,17 +83,23 @@ const Navbar: React.FC = () => {
               aria-label="Toggle menu"
             >
               <span
-                className={`block h-[2px] bg-slate-700 transition-all duration-300 origin-center ${
+                className={`block h-[2px] transition-all duration-300 origin-center ${
+                  isScrolled ? "bg-white" : "bg-[#3B1F6B]"
+                } ${
                   menuOpen ? "w-6 rotate-45 translate-y-[7px]" : "w-6"
                 }`}
               />
               <span
-                className={`block h-[2px] bg-slate-700 transition-all duration-300 ${
+                className={`block h-[2px] transition-all duration-300 ${
+                  isScrolled ? "bg-white" : "bg-[#3B1F6B]"
+                } ${
                   menuOpen ? "w-0 opacity-0" : "w-4"
                 }`}
               />
               <span
-                className={`block h-[2px] bg-slate-700 transition-all duration-300 origin-center ${
+                className={`block h-[2px] transition-all duration-300 origin-center ${
+                  isScrolled ? "bg-white" : "bg-[#3B1F6B]"
+                } ${
                   menuOpen ? "w-6 -rotate-45 -translate-y-[7px]" : "w-6"
                 }`}
               />
@@ -135,24 +109,37 @@ const Navbar: React.FC = () => {
 
         {/* MOBILE MENU */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            menuOpen ? "max-h-80 border-t border-slate-100" : "max-h-0"
+          className={`max-w-6xl mx-auto md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            menuOpen ? "max-h-80 mt-3" : "max-h-0"
           }`}
         >
-          <div className="flex flex-col px-6 py-4 gap-4 bg-white/95">
+          <div
+            className={`flex flex-col px-5 py-4 gap-4 rounded-2xl border backdrop-blur-xl ${
+              isScrolled
+                ? "bg-[#4f00c2]/95 border-violet-300/30"
+                : "bg-white/90 border-white/50"
+            }`}
+          >
             {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => handleMobileNav(item.href)}
-                className={`font-bold text-sm transition-colors py-1 ${
-                  active === item.href
-                    ? "text-[#6200EE]"
-                    : "text-slate-600 hover:text-[#6200EE]"
-                }`}
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.to === "/"}
+                onClick={handleMobileNav}
+                className={({ isActive }) =>
+                  `font-bold text-sm transition-colors py-1 ${
+                    isScrolled
+                      ? isActive
+                        ? "text-white"
+                        : "text-violet-100 hover:text-white"
+                      : isActive
+                      ? "text-[#6200EE]"
+                      : "text-slate-700 hover:text-[#6200EE]"
+                  }`
+                }
               >
                 {item.label}
-              </a>
+              </NavLink>
             ))}
           </div>
         </div>

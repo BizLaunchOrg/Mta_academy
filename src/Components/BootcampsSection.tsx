@@ -1,6 +1,7 @@
 "use client";
 
-import React, { ReactNode } from "react";
+import React from "react";
+import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import {
   MdOutlineRocketLaunch,
@@ -41,7 +42,7 @@ const bootcamps: Bootcamp[] = [
     icon: <MdOutlineRocketLaunch />,
     badge: "4 Slots Left",
     features: ["1-on-1 Pitch Feedback", "Investor Deck Review"],
-    price: "$499",
+    price: "₦30,000",
     variant: "primary",
   },
   {
@@ -52,7 +53,7 @@ const bootcamps: Bootcamp[] = [
     icon: <MdAutoStories />,
     badge: "Limited Slots",
     features: ["Narrative Architecture", "Emotional Hook Design"],
-    price: "$599",
+    price: "₦58,000",
     variant: "tertiary",
     featured: true,
   },
@@ -63,7 +64,7 @@ const bootcamps: Bootcamp[] = [
       "Psychological triggers and linguistic patterns for high-value deals.",
     icon: <MdCampaign />,
     features: ["Live Simulations", "Body Language Reading"],
-    price: "$499",
+    price: "₦45,000",
     variant: "neutral",
   },
 ];
@@ -143,7 +144,11 @@ const BootcampCard: React.FC<{ bootcamp: Bootcamp }> = ({ bootcamp }) => {
 
       {/* CTA */}
       <Link
-        to={`/bootcamp/${bootcamp.id}`}
+        to="/enrollment"
+        state={{
+          prefillProgram: bootcamp.title,
+          prefillType: "bootcamp",
+        }}
         className={`
           relative z-10 block text-center w-full py-3 rounded-xl font-semibold
           transition-all duration-300 overflow-hidden

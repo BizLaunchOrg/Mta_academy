@@ -2,13 +2,21 @@
 import { Link } from "react-router-dom";
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen bg-violet-100 overflow-hidden px-6 md:px-10 pt-10 pb-16 flex flex-col justify-between">
+    <section className="relative min-h-screen bg-gradient-to-br from-violet-100 via-fuchsia-50 to-indigo-100 overflow-hidden px-6 md:px-10 pt-12 pb-16 flex flex-col justify-between">
       {/* Glow */}
       <div className="absolute top-0 right-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-violet-200 blur-[120px] rounded-full opacity-60 pointer-events-none" />
+      <div className="absolute -left-20 top-20 w-64 h-64 bg-purple-300/35 blur-3xl rounded-full pointer-events-none" />
+      <div className="absolute right-0 bottom-24 w-72 h-72 bg-indigo-200/45 blur-3xl rounded-full pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none">
+        <span className="hero-float hero-float-1">🎓</span>
+        <span className="hero-float hero-float-2">🎓</span>
+        <span className="hero-float hero-float-3">📘</span>
+        <span className="hero-float hero-float-4">🏅</span>
+      </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-10">
         {/* Label */}
-        <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#6200EE] flex items-center gap-2">
+        <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#6200EE] flex items-center justify-center lg:justify-start gap-2 text-center lg:text-left">
           <span className="w-1.5 h-1.5 rounded-full bg-violet-500 inline-block" />
           Premium Communication Coaching
         </span>
@@ -16,33 +24,35 @@ export default function HeroSection() {
         {/* Content */}
         <div className="flex flex-col lg:flex-row items-start gap-12">
           {/* LEFT */}
-          <div className="flex flex-col gap-6 lg:w-1/2">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1] tracking-tighter text-gray-900">
+          <div className="flex flex-col gap-5 sm:gap-6 lg:w-1/2 text-center lg:text-left items-center lg:items-start">
+            <h1 className="text-[2.9rem] sm:text-6xl md:text-6xl lg:text-7xl font-black leading-[0.95] tracking-tight text-gray-900">
               Master the
               <br />
-              Art of
+              <span className="text-[#4b1bb3]">Art of</span>
               <br />
               <span className="text-[#6200EE] italic">Speaking</span>
               <br />
               with Confidence
             </h1>
 
-            <p className="text-base md:text-lg text-gray-500 leading-relaxed max-w-xl">
-              Forge your voice into a tool of clarity and influence. Join the
-              elite top 1% of communicators who lead with presence.
+            <p className="text-base sm:text-lg md:text-lg text-gray-700 leading-relaxed max-w-xl">
+              Forge your voice into a tool of{" "}
+              <span className="text-[#6200EE] font-semibold">clarity</span> and{" "}
+              <span className="text-[#6200EE] font-semibold">influence</span>. Join
+              the elite top 1% of communicators who lead with presence.
             </p>
 
             {/* Buttons */}
-           <div className="flex items-center gap-4 flex-wrap">
+           <div className="flex items-center justify-center lg:justify-start gap-4 flex-wrap">
   <Link
-    to="/cohorts"
+    to="/programs"
     className="group inline-block bg-violet-600 text-white font-bold px-7 py-3.5 rounded-full text-sm transition-all duration-300 shadow-lg hover:-translate-y-1 hover:shadow-xl active:scale-95"
   >
     Join a Cohort
   </Link>
 
   <Link
-    to="/apply"
+    to="/enrollment"
     className="group inline-block bg-white text-[#212121] font-bold px-7 py-3.5 rounded-full text-sm transition-all duration-300 shadow-md hover:-translate-y-1 hover:bg-violet-600 hover:text-white active:scale-95"
   >
     Apply Now
@@ -50,7 +60,7 @@ export default function HeroSection() {
 </div>
 
             {/* Stats */}
-            <div className="flex items-center gap-8 pt-4 border-t border-gray-100 flex-wrap">
+            <div className="flex items-center justify-center lg:justify-start gap-8 pt-4 border-t border-gray-100 flex-wrap w-full lg:w-auto">
               <div>
                 <p className="text-xl md:text-2xl font-black text-gray-900">
                   5000+
@@ -68,44 +78,40 @@ export default function HeroSection() {
                 </p>
               </div>
             </div>
+
+            <div className="flex items-center justify-center lg:justify-start gap-3 flex-wrap pt-1">
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/80 text-[#6200EE] border border-violet-200">
+                Live Coaching
+              </span>
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/80 text-[#6200EE] border border-violet-200">
+                Career-Ready Curriculum
+              </span>
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/80 text-[#6200EE] border border-violet-200">
+                Elite Community
+              </span>
+            </div>
           </div>
 
           {/* RIGHT */}
-          <div className="relative lg:w-1/2 flex justify-center">
+          <div className="relative w-full lg:w-1/2 flex justify-center">
             {/* Image */}
             <div
-              className="w-full max-w-[520px] rounded-3xl overflow-hidden"
+              className="w-full max-w-[520px] rounded-3xl overflow-hidden border border-white/35 shadow-[0_28px_70px_rgba(38,17,79,0.35)]"
               style={{
                 background:
                   "linear-gradient(135deg, #2d1b4e 0%, #1a0a2e 40%, #3b1f6b 100%)",
                 minHeight: 380,
               }}
             >
-              <div className="relative w-full h-full flex items-end justify-center">
-                {/* Glow */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-56 opacity-60"
-                  style={{
-                    background:
-                      "radial-gradient(ellipse at top, #a855f7 0%, transparent 70%)",
-                  }}
-                />
-
-                {/* SVG */}
-                <div className="relative z-10 flex items-end h-full">
-                  <svg
-                    viewBox="0 0 200 340"
-                    width="180"
-                    className="opacity-80"
-                  >
-                    <ellipse cx="100" cy="52" rx="28" ry="32" fill="#c4a882" />
-                    <path d="M60 120 Q65 90 100 85 Q135 90 140 120 L148 260 Q100 270 52 260 Z" fill="#2a2a3e"/>
-                  </svg>
-                </div>
-              </div>
+              <img
+                src="/MTA2.jpeg"
+                alt="MTA Academy hero"
+                className="w-full h-full min-h-[380px] object-cover object-center"
+              />
             </div>
 
             {/* TESTIMONIAL CARD */}
-            <div className="absolute bottom-[-20px] md:bottom-[-30px] left-4 md:-left-6 bg-white rounded-2xl shadow-xl p-5 w-[200px] md:w-[230px] border border-gray-100 transition-all duration-300 hover:-translate-y-2">
+            <div className="absolute bottom-[-20px] md:bottom-[-30px] left-1/2 -translate-x-1/2 md:left-4 md:translate-x-0 bg-white rounded-2xl shadow-xl p-5 w-[200px] md:w-[230px] border border-gray-100 transition-all duration-300 hover:-translate-y-2">
               
               <div className="flex gap-0.5 mb-2">
                 {[...Array(5)].map((_, i) => (

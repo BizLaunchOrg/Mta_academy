@@ -1,51 +1,9 @@
-const sideCards = [
-  {
-    id: 1,
-    tag: "WEEKEND INTENSIVE",
-    title: "Prompt Architecture",
-    description: "Mastering the logic of Generative AI for industrial output.",
-  },
-  {
-    id: 2,
-    tag: "1-DAY WORKSHOP",
-    title: "VC Pitch Intensive",
-    description:
-      "Crafting the narrative that captures venture capital attention.",
-  },
-];
-
-function SideCard({
-  tag,
-  title,
-  description,
-}: {
-  tag: string;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="bg-white rounded-2xl p-6 flex flex-col gap-3 shadow-sm hover:shadow-md transition-shadow duration-300">
-      <span className="text-xs font-bold tracking-widest text-violet-600 uppercase">
-        {tag}
-      </span>
-      <h3 className="text-xl font-bold text-gray-900">{title}</h3>
-      <p className="text-sm text-gray-500 leading-relaxed">{description}</p>
-      <button className="flex items-center gap-1 text-sm font-semibold text-violet-700 hover:text-violet-900 transition-colors mt-1 group w-fit">
-        Learn More
-        <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">
-          →
-        </span>
-      </button>
-    </div>
-  );
-}
-
 function EventHero() {
   return (
-    <div className="flex flex-col md:flex-row gap-5 w-full">
+    <div className="flex w-full">
       {/* Featured Hero Card */}
       <div
-        className="relative rounded-3xl overflow-hidden flex flex-col justify-end p-8 md:w-[62%] min-h-[420px]"
+        className="relative rounded-3xl overflow-hidden flex flex-col justify-end p-8 w-full min-h-[420px]"
         style={{
           background:
             "radial-gradient(ellipse at 60% 30%, #1a1040 0%, #0d0d1a 70%)",
@@ -106,13 +64,6 @@ function EventHero() {
           </button>
         </div>
       </div>
-
-      {/* Side Cards */}
-      <div className="flex flex-col gap-5 md:w-[38%]">
-        {sideCards.map((card) => (
-          <SideCard key={card.id} {...card} />
-        ))}
-      </div>
     </div>
   );
 }
@@ -134,7 +85,7 @@ export default function BootcampPage() {
           </h1>
         </div>
 
-        {/* Hero + Side Cards */}
+        {/* Hero */}
         <EventHero />
       </div>
     </div>
