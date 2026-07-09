@@ -17,7 +17,7 @@ type Coach = {
 const coaches: Coach[] = [
   {
     id: "coach-1",
-    name: "Dr. Amara Okafor",
+    name: "Moridiyah Temitope Abdulquadri",
     title: "Lead Executive Coach",
     specialty: "Executive Presence & Leadership",
     bio: "Former corporate communications director with 15 years of experience coaching C-suite leaders across Africa and Europe.",
@@ -26,7 +26,7 @@ const coaches: Coach[] = [
   },
   {
     id: "coach-2",
-    name: "Sarah Chen",
+    name: "Rahmat Abisola Alade",
     title: "Narrative Strategy Coach",
     specialty: "Storytelling & Persuasive Influence",
     bio: "Brand strategist and narrative architect who helps founders and executives turn complex ideas into stories that move audiences to action.",
@@ -35,7 +35,7 @@ const coaches: Coach[] = [
   },
   {
     id: "coach-3",
-    name: "James Whitfield",
+    name: "Kelvin Chukwuemeke Osadebe",
     title: "Senior Speaking Coach",
     specialty: "Public Speaking & Pitching",
     bio: "Award-winning speaker and TEDx coach who has trained over 2,000 professionals to conquer stage fright and command any room.",
