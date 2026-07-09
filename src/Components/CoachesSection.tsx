@@ -7,9 +7,6 @@ import { whatsappLink } from "../utils/whatsapp";
 type Coach = {
   id: string;
   name: string;
-  title: string;
-  specialty: string;
-  bio: string;
   focus: string[];
   image: string;
 };
@@ -18,27 +15,18 @@ const coaches: Coach[] = [
   {
     id: "coach-1",
     name: "Moridiyah Temitope Abdulquadri",
-    // title: "Lead Executive Coach",
-    // specialty: "Executive Presence & Leadership",
-    // bio: "Former corporate communications director with 15 years of experience coaching C-suite leaders across Africa and Europe.",
     focus: ["Executive Presence", "Leadership", "Cohort Programs"],
     image: "/coach-1.jpeg",
   },
   {
     id: "coach-2",
     name: "Rahmat Abisola Alade",
-    // title: "Narrative Strategy Coach",
-    // specialty: "Storytelling & Persuasive Influence",
-    // bio: "Brand strategist and narrative architect who helps founders and executives turn complex ideas into stories that move audiences to action.",
     focus: ["Storytelling", "Persuasive Influence", "Brand Narrative"],
     image: "/coach-2.jpeg",
   },
   {
     id: "coach-3",
     name: "Kelvin Chukwuemeke Osadebe",
-    // title: "Senior Speaking Coach",
-    // specialty: "Public Speaking & Pitching",
-    // bio: "Award-winning speaker and TEDx coach who has trained over 2,000 professionals to conquer stage fright and command any room.",
     focus: ["Public Speaking", "Pitch Delivery", "Weekend Intensives"],
     image: "/coach-3.jpeg",
   },
@@ -63,7 +51,7 @@ const CoachesSection: React.FC = () => {
               key={coach.id}
               className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-72 overflow-hidden">
                 <img
                   src={coach.image}
                   alt={coach.name}
@@ -71,16 +59,11 @@ const CoachesSection: React.FC = () => {
                 />
               </div>
 
-              <div className="p-6 space-y-3">
-                <p className="text-xs font-semibold text-[#6200EE] uppercase tracking-wide">
-                  {coach.specialty}
-                </p>
-                <h3 className="text-xl font-bold text-gray-900">{coach.name}</h3>
-                <p className="text-sm font-medium text-gray-500">{coach.title}</p>
-                <p className="text-sm text-gray-600 leading-relaxed pt-1">
-                  {coach.bio}
-                </p>
-                <div className="flex flex-wrap gap-2 pt-3">
+              <div className="p-5 text-center space-y-3">
+                <h3 className="text-lg font-bold text-gray-900 leading-snug">
+                  {coach.name}
+                </h3>
+                <div className="flex flex-wrap gap-2 justify-center pt-1">
                   {coach.focus.map((tag) => (
                     <span
                       key={tag}

@@ -7,8 +7,6 @@ import { whatsappLink } from "../utils/whatsapp";
 type Course = {
   id: string;
   title: string;
-  instructor: string;
-  instructorInitials: string;
   price: string;
   rating: string;
   reviews: number;
@@ -17,21 +15,8 @@ type Course = {
 
 const courses: Course[] = [
   {
-    id: "executive-presence",
-    title: "Executive Presence",
-    instructor: "Dr. Amara Okafor",
-    instructorInitials: "AO",
-    price: "Enroll Now",
-    rating: "4.9",
-    reviews: 84,
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=384&fit=crop&q=80",
-  },
-  {
     id: "public-speaking",
-    title: "Public Speaking Mastery",
-    instructor: "James Whitfield",
-    instructorInitials: "JW",
+    title: "Public Speaking",
     price: "Enroll Now",
     rating: "4.8",
     reviews: 112,
@@ -39,11 +24,18 @@ const courses: Course[] = [
       "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&h=384&fit=crop&q=80",
   },
   {
-    id: "storytelling",
-    title: "Storytelling for Leaders",
-    instructor: "Sarah Chen",
-    instructorInitials: "SC",
-    price: "₦58,000",
+    id: "communication-strategy",
+    title: "Communication Strategy",
+    price: "Enroll Now",
+    rating: "4.9",
+    reviews: 84,
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=384&fit=crop&q=80",
+  },
+  {
+    id: "diction",
+    title: "Diction",
+    price: "Enroll Now",
     rating: "4.9",
     reviews: 67,
     image:
@@ -89,15 +81,7 @@ const CoursesSection: React.FC = () => {
                 {course.title}
               </h3>
 
-              <div className="flex items-center justify-between border-t border-gray-100 pt-4 mt-auto">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-[#6200EE] text-white text-xs font-bold flex items-center justify-center">
-                    {course.instructorInitials}
-                  </div>
-                  <span className="text-sm font-medium text-gray-600">
-                    {course.instructor}
-                  </span>
-                </div>
+              <div className="flex items-center justify-end border-t border-gray-100 pt-4 mt-auto">
                 <span className="font-bold text-[#6200EE]">{course.price}</span>
               </div>
             </div>

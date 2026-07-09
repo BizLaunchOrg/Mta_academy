@@ -2,36 +2,28 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 
 type Testimonial = {
-  name: string;
   role: string;
   quote: string;
-  initials: string;
   variant: "default" | "highlight";
 };
 
 const testimonials: Testimonial[] = [
   {
-    name: "Mark Stevenson",
-    role: "Director of Operations",
+    role: "Event Compère",
     quote:
-      "Before MTA, I would stutter in boardroom meetings. After the Executive Presence cohort, I was promoted to Director within 3 months. The ROI is immeasurable.",
-    initials: "MS",
+      "Thank you very much for serving as the compère at today's event. I truly appreciate your effort and the way you steered the programme exactly as intended. I always said you're exceptional and you proved it today.",
     variant: "default",
   },
   {
-    name: "Elena Rodriguez",
-    role: "Startup Founder",
+    role: "Panel Session",
     quote:
-      "The Storytelling Bootcamp was a revelation. It changed how I view marketing and leadership entirely.",
-    initials: "ER",
+      "Thank you for your incredible contribution to today's panel session. It was such a joy moderating alongside you — your thoughts on voice, presence, and confidence added so much value. I loved how you made it relatable and empowering for everyone listening. I left the session feeling uplifted.",
     variant: "highlight",
   },
   {
-    name: "Dr. Julian Thorne",
-    role: "Senior Researcher",
+    role: "Panel Session",
     quote:
-      "MTA Academy doesn't just teach you how to speak; they teach you how to think. It's intellectual sharpening at its finest.",
-    initials: "JT",
+      "It's always inspiring to see how you balance so many roles while staying grounded and intentional. It was such a pleasure to share the stage with you. Thank you for your generosity of ideas and your willingness to share your expertise. You made the panel a memorable experience.",
     variant: "default",
   },
 ];
@@ -42,24 +34,24 @@ const TestimonialSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="inline-block py-1 px-3 rounded-full bg-violet-100 text-[#6200EE] text-xs font-bold uppercase tracking-wider mb-2">
-            Testimonials
+            Feedbacks
           </span>
           <h2 className="font-slab text-3xl md:text-4xl font-bold uppercase tracking-wide text-gray-900">
             Real Voices, Real Impact
           </h2>
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-            Hear from professionals who transformed their communication and
-            accelerated their careers.
+            Messages from clients and partners who experienced MTA Academy in
+            action.
           </p>
         </div>
 
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((t) => {
+          {testimonials.map((t, index) => {
             const isHighlighted = t.variant === "highlight";
 
             return (
               <div
-                key={t.name}
+                key={`${t.role}-${index}`}
                 className={`flex flex-col p-6 rounded-2xl transition-shadow ${
                   isHighlighted
                     ? "bg-[#6200EE] text-white shadow-lg"
@@ -82,35 +74,17 @@ const TestimonialSection: React.FC = () => {
                     isHighlighted ? "text-violet-50" : "text-gray-600"
                   }`}
                 >
-                  "{t.quote}"
+                  &ldquo;{t.quote}&rdquo;
                 </p>
 
-                <div className="flex items-center gap-3 pt-4 border-t border-current/10">
-                  <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm shrink-0 ${
-                      isHighlighted
-                        ? "bg-white/20 text-white"
-                        : "bg-violet-100 text-[#6200EE]"
+                <div className="pt-4 border-t border-current/10">
+                  <p
+                    className={`text-xs font-semibold uppercase tracking-wide ${
+                      isHighlighted ? "text-violet-200" : "text-gray-500"
                     }`}
                   >
-                    {t.initials}
-                  </div>
-                  <div>
-                    <p
-                      className={`font-bold text-sm ${
-                        isHighlighted ? "text-white" : "text-gray-900"
-                      }`}
-                    >
-                      {t.name}
-                    </p>
-                    <p
-                      className={`text-xs ${
-                        isHighlighted ? "text-violet-200" : "text-gray-500"
-                      }`}
-                    >
-                      {t.role}
-                    </p>
-                  </div>
+                    {t.role}
+                  </p>
                 </div>
               </div>
             );
