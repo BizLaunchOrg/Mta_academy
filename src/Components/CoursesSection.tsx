@@ -24,7 +24,8 @@ const courses: Course[] = [
     price: "Enroll Now",
     rating: "4.9",
     reviews: 84,
-    image: "/MTA2.jpeg",
+    image:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=384&fit=crop&q=80",
   },
   {
     id: "public-speaking",
@@ -34,7 +35,8 @@ const courses: Course[] = [
     price: "Enroll Now",
     rating: "4.8",
     reviews: 112,
-    image: "/MTA.jpeg",
+    image:
+      "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&h=384&fit=crop&q=80",
   },
   {
     id: "storytelling",
@@ -44,7 +46,8 @@ const courses: Course[] = [
     price: "₦58,000",
     rating: "4.9",
     reviews: 67,
-    image: "/MTA2.jpeg",
+    image:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=384&fit=crop&q=80",
   },
 ];
 
@@ -72,6 +75,7 @@ const CoursesSection: React.FC = () => {
                   alt={course.title}
                   className="w-full h-full object-cover"
                   src={course.image}
+                  loading="lazy"
                 />
               </div>
 

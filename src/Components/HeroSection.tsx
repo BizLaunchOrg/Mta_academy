@@ -13,8 +13,8 @@ export default function HeroSection() {
         <span className="absolute bottom-[38%] left-[8%] w-2.5 h-2.5 rounded-full bg-[#6200EE]/30" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-24 pb-24 lg:pb-28">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-28 pb-36">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">
             <span className="inline-block py-1 px-3 rounded-full bg-violet-100 text-[#6200EE] text-sm font-semibold mb-6 font-slab uppercase tracking-wider">
               Premium Communication Coaching
@@ -78,7 +78,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="relative h-[460px] sm:h-[520px] lg:h-[560px] flex justify-center items-end lg:items-center">
+          <div className="relative h-[520px] sm:h-[580px] lg:h-[620px] flex justify-center items-end lg:items-center">
             <div className="hero-rings" aria-hidden />
 
             <div
