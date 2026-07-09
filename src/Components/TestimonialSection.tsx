@@ -2,36 +2,28 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 
 type Testimonial = {
-  name: string;
   role: string;
   quote: string;
-  initials: string;
   variant: "default" | "highlight";
 };
 
 const testimonials: Testimonial[] = [
   {
-    name: "Event Client",
-    role: "After Event Compère",
+    role: "Event Compère",
     quote:
       "Thank you very much for serving as the compère at today's event. I truly appreciate your effort and the way you steered the programme exactly as intended. I always said you're exceptional and you proved it today.",
-    initials: "EC",
     variant: "default",
   },
   {
-    name: "Panel Co-Moderator",
-    role: "Panel Session Partner",
+    role: "Panel Session",
     quote:
       "Thank you for your incredible contribution to today's panel session. It was such a joy moderating alongside you — your thoughts on voice, presence, and confidence added so much value. I loved how you made it relatable and empowering for everyone listening. I left the session feeling uplifted.",
-    initials: "PM",
     variant: "highlight",
   },
   {
-    name: "Panel Co-Moderator",
-    role: "Panel Session Partner",
+    role: "Panel Session",
     quote:
       "It's always inspiring to see how you balance so many roles while staying grounded and intentional. It was such a pleasure to share the stage with you. Thank you for your generosity of ideas and your willingness to share your expertise. You made the panel a memorable experience.",
-    initials: "PM",
     variant: "default",
   },
 ];
@@ -59,7 +51,7 @@ const TestimonialSection: React.FC = () => {
 
             return (
               <div
-                key={`${t.name}-${index}`}
+                key={`${t.role}-${index}`}
                 className={`flex flex-col p-6 rounded-2xl transition-shadow ${
                   isHighlighted
                     ? "bg-[#6200EE] text-white shadow-lg"
@@ -85,32 +77,14 @@ const TestimonialSection: React.FC = () => {
                   &ldquo;{t.quote}&rdquo;
                 </p>
 
-                <div className="flex items-center gap-3 pt-4 border-t border-current/10">
-                  <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm shrink-0 ${
-                      isHighlighted
-                        ? "bg-white/20 text-white"
-                        : "bg-violet-100 text-[#6200EE]"
+                <div className="pt-4 border-t border-current/10">
+                  <p
+                    className={`text-xs font-semibold uppercase tracking-wide ${
+                      isHighlighted ? "text-violet-200" : "text-gray-500"
                     }`}
                   >
-                    {t.initials}
-                  </div>
-                  <div>
-                    <p
-                      className={`font-bold text-sm ${
-                        isHighlighted ? "text-white" : "text-gray-900"
-                      }`}
-                    >
-                      {t.name}
-                    </p>
-                    <p
-                      className={`text-xs ${
-                        isHighlighted ? "text-violet-200" : "text-gray-500"
-                      }`}
-                    >
-                      {t.role}
-                    </p>
-                  </div>
+                    {t.role}
+                  </p>
                 </div>
               </div>
             );

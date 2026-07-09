@@ -1,21 +1,13 @@
 import React from "react";
 import PillArrowButton from "./ui/PillArrowButton";
 import { whatsappLink } from "../utils/whatsapp";
-import {
-  MdPsychology,
-  MdRecordVoiceOver,
-  MdAutoStories,
-  MdCampaign,
-  MdOutlineRocketLaunch,
-  MdPersonOutline,
-} from "react-icons/md";
+import { MdRecordVoiceOver, MdCampaign, MdMic } from "react-icons/md";
 
 type Category = {
   id: string;
   number: string;
   title: string;
   description: string;
-  courses: string;
   icon: React.ReactNode;
   iconBg: string;
   featured?: boolean;
@@ -23,65 +15,32 @@ type Category = {
 
 const categories: Category[] = [
   {
-    id: "executive",
-    number: "01",
-    title: "Executive Communication",
-    description:
-      "Command authority in boardrooms, leadership meetings, and high-stakes conversations.",
-    courses: "2+ Programs",
-    icon: <MdPsychology className="text-2xl text-[#6200EE]" />,
-    iconBg: "bg-violet-50",
-  },
-  {
     id: "public-speaking",
-    number: "02",
+    number: "01",
     title: "Public Speaking",
     description:
       "Conquer any stage with confidence, clarity, and compelling delivery techniques.",
-    courses: "3+ Programs",
     icon: <MdRecordVoiceOver className="text-2xl text-[#6200EE]" />,
     iconBg: "bg-violet-50",
     featured: true,
   },
   {
-    id: "storytelling",
-    number: "03",
-    title: "Storytelling & Narrative",
+    id: "communication-strategy",
+    number: "02",
+    title: "Communication Strategy",
     description:
-      "Weave powerful narratives into presentations, pitches, and everyday leadership.",
-    courses: "2+ Programs",
-    icon: <MdAutoStories className="text-2xl text-[#7C4DFF]" />,
-    iconBg: "bg-purple-50",
-  },
-  {
-    id: "negotiation",
-    number: "04",
-    title: "Negotiation & Influence",
-    description:
-      "Master psychological triggers and linguistic patterns for high-value outcomes.",
-    courses: "1+ Program",
-    icon: <MdCampaign className="text-2xl text-[#4800B2]" />,
-    iconBg: "bg-indigo-50",
-  },
-  {
-    id: "pitching",
-    number: "05",
-    title: "Pitch & Presentation",
-    description:
-      "Turn your ideas into investor-ready pitches that secure funding and partnerships.",
-    courses: "2+ Programs",
-    icon: <MdOutlineRocketLaunch className="text-2xl text-[#6200EE]" />,
+      "Plan powerful messages, influence audiences, and lead conversations with intention.",
+    icon: <MdCampaign className="text-2xl text-[#6200EE]" />,
     iconBg: "bg-violet-50",
   },
   {
-    id: "personal-brand",
-    number: "06",
-    title: "Personal Branding",
+    id: "diction",
+    number: "03",
+    title: "Diction",
     description:
-      "Build a distinctive professional identity that opens doors and creates lasting impact.",
-    courses: "1+ Program",
-    icon: <MdPersonOutline className="text-2xl text-[#7C4DFF]" />,
-    iconBg: "bg-fuchsia-50",
+      "Master pronunciation, tone, and articulation so your words always land with impact.",
+    icon: <MdMic className="text-2xl text-[#7C4DFF]" />,
+    iconBg: "bg-purple-50",
   },
 ];
 
@@ -100,7 +59,7 @@ const CategoriesSection: React.FC = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {categories.map((cat) => (
             <div
               key={cat.id}
@@ -124,16 +83,7 @@ const CategoriesSection: React.FC = () => {
                   <h3 className="font-bold text-lg mb-2 text-gray-900">
                     {cat.title}
                   </h3>
-                  <p className="text-sm text-gray-500 mb-4">{cat.description}</p>
-                  <span
-                    className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                      cat.featured
-                        ? "text-white bg-[#6200EE]"
-                        : "text-gray-500 bg-gray-100"
-                    }`}
-                  >
-                    {cat.courses}
-                  </span>
+                  <p className="text-sm text-gray-500">{cat.description}</p>
                 </div>
               </div>
             </div>

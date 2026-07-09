@@ -7,45 +7,32 @@ import { whatsappLink } from "../utils/whatsapp";
 type Course = {
   id: string;
   title: string;
-  instructor: string;
-  instructorInitials: string;
-  price: string;
-  rating: string;
-  reviews: number;
+  description: string;
   image: string;
 };
 
 const courses: Course[] = [
   {
-    id: "executive-presence",
-    title: "Executive Presence",
-    instructor: "Dr. Amara Okafor",
-    instructorInitials: "AO",
-    price: "Enroll Now",
-    rating: "4.9",
-    reviews: 84,
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=384&fit=crop&q=80",
-  },
-  {
     id: "public-speaking",
-    title: "Public Speaking Mastery",
-    instructor: "James Whitfield",
-    instructorInitials: "JW",
-    price: "Enroll Now",
-    rating: "4.8",
-    reviews: 112,
+    title: "Public Speaking",
+    description:
+      "Build stage confidence, structure compelling talks, and deliver with clarity in any room.",
     image:
       "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&h=384&fit=crop&q=80",
   },
   {
-    id: "storytelling",
-    title: "Storytelling for Leaders",
-    instructor: "Sarah Chen",
-    instructorInitials: "SC",
-    price: "₦58,000",
-    rating: "4.9",
-    reviews: 67,
+    id: "communication-strategy",
+    title: "Communication Strategy",
+    description:
+      "Learn to plan messages, influence audiences, and communicate with purpose across settings.",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=384&fit=crop&q=80",
+  },
+  {
+    id: "diction",
+    title: "Diction",
+    description:
+      "Sharpen pronunciation, tone, and word choice so every sentence lands with precision.",
     image:
       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=384&fit=crop&q=80",
   },
@@ -55,9 +42,9 @@ const CoursesSection: React.FC = () => {
   return (
     <section className="py-24 bg-[#fdfbf9]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12">
+        <div className="mb-12 text-center md:text-left">
           <span className="inline-block py-1 px-3 rounded-full bg-violet-100 text-[#6200EE] text-xs font-bold uppercase tracking-wider mb-2">
-            Our Course
+            Our Courses
           </span>
           <h2 className="font-slab text-4xl font-bold uppercase tracking-wide text-gray-900">
             Explore Our Courses
@@ -79,27 +66,22 @@ const CoursesSection: React.FC = () => {
                 />
               </div>
 
-              <div className="flex items-center gap-1 text-yellow-400 text-sm mb-2">
-                <span>★</span>
-                <span className="text-gray-700 font-medium">{course.rating}</span>
-                <span className="text-gray-400">({course.reviews})</span>
-              </div>
-
-              <h3 className="font-bold text-lg text-gray-900 mb-4 line-clamp-2 flex-grow">
+              <h3 className="font-bold text-lg text-gray-900 mb-2">
                 {course.title}
               </h3>
 
-              <div className="flex items-center justify-between border-t border-gray-100 pt-4 mt-auto">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-[#6200EE] text-white text-xs font-bold flex items-center justify-center">
-                    {course.instructorInitials}
-                  </div>
-                  <span className="text-sm font-medium text-gray-600">
-                    {course.instructor}
-                  </span>
-                </div>
-                <span className="font-bold text-[#6200EE]">{course.price}</span>
-              </div>
+              <p className="text-sm text-gray-600 leading-relaxed mb-6 flex-grow">
+                {course.description}
+              </p>
+
+              <a
+                href={whatsappLink("seeAllCourses")}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center font-slab text-xs font-semibold uppercase tracking-wider text-[#6200EE] border border-violet-200 rounded-full py-2.5 hover:bg-violet-50 transition-colors mt-auto"
+              >
+                Enroll Now
+              </a>
             </div>
           ))}
         </div>
