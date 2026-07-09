@@ -4,12 +4,12 @@ import React from "react";
 
 const stats = [
   {
-    value: "10+",
+    value: "5+",
     label: "Years of Communication",
     sublabel: "Coaching Excellence",
   },
   {
-    value: "5000+",
+    value: "100+",
     label: "Students Enrolled in",
     sublabel: "MTA Academy Programs",
   },
