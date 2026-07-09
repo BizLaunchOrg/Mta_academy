@@ -186,8 +186,9 @@ const CohortsSection: React.FC = () => {
             <p className="text-purple-600 font-bold uppercase text-xs tracking-widest">
               Upcoming Enrollments
             </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-              Signature Cohort Programs
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">
+              Signature Cohort{" "}
+              <span className="text-[#6200EE] italic">Programs</span>
             </h2>
           </div>
 

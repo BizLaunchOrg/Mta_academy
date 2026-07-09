@@ -1,51 +1,62 @@
 "use client";
 
 import React from "react";
-import { Link } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa";
 
-const StorySection: React.FC = () => {
+const stats = [
+  {
+    value: "10+",
+    label: "Years of Communication",
+    sublabel: "Coaching Excellence",
+  },
+  {
+    value: "5000+",
+    label: "Students Enrolled in",
+    sublabel: "MTA Academy Programs",
+  },
+  {
+    value: "3",
+    label: "Expert Coaches",
+    sublabel: "Dedicated to Your Growth",
+  },
+  {
+    value: "Top 1%",
+    label: "Global Ranking in",
+    sublabel: "Communication Training",
+  },
+];
+
+const AboutSection: React.FC = () => {
   return (
-    <section className="py-20 md:py-24 bg-gradient-to-b from-gray-50 to-violet-50/40 relative overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6 lg:px-10 space-y-6 text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">
-            From Silence to Influence
-          </h2>
+    <section className="py-16 bg-white border-b border-gray-100">
+      <div className="max-w-5xl mx-auto px-4 text-center">
+        <span className="inline-block py-1 px-3 rounded-full bg-violet-100 text-[#7C4DFF] text-xs font-bold uppercase tracking-wider mb-4">
+          About Us
+        </span>
 
-          {/* IMAGE */}
-          <div className="rounded-3xl overflow-hidden shadow-xl border border-violet-100">
-            <img
-              src="/MTA.jpeg"
-              alt="MTA Academy"
-              className="w-full h-[320px] sm:h-[400px] md:h-[500px] object-cover object-center"
-            />
-          </div>
+        <h2 className="font-slab text-3xl md:text-4xl font-bold mb-12 text-gray-900 leading-tight uppercase tracking-wide">
+          We are passionate about empowering learners worldwide with
+          high-quality, accessible communication coaching. Our mission is to
+          transform raw potential into clarity, confidence, and commanding
+          presence.
+        </h2>
 
-          <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-            Ten years ago, our founder stood at a podium, paralyzed by fear.
-            That moment of silence sparked a decade-long obsession: breaking
-            down the mechanics of human influence.
-          </p>
-
-          <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-            Today, MTA Academy isn't just a coaching center; it's a refinery.
-            We take the raw energy of high-achievers and shape it into clarity,
-            confidence, and presence.
-          </p>
-
-          {/* CTA (ROUTED) */}
-          <div className="pt-2">
-            <Link
-              to="/programs"
-              className="inline-flex items-center gap-2 text-purple-700 font-semibold hover:gap-3 transition-all"
-            >
-              Read the Full Story
-              <FaArrowRight className="text-sm" />
-            </Link>
-          </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-gray-100">
+          {stats.map((stat) => (
+            <div key={stat.value} className="px-4">
+              <div className="text-4xl font-extrabold text-gray-900 mb-2">
+                {stat.value}
+              </div>
+              <div className="text-sm text-gray-500 font-medium">
+                {stat.label}
+                <br />
+                {stat.sublabel}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 };
 
-export default StorySection;
+export default AboutSection;

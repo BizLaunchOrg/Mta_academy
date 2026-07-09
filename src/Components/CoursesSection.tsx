@@ -1,0 +1,113 @@
+"use client";
+
+import React from "react";
+import PillArrowButton from "./ui/PillArrowButton";
+import { whatsappLink } from "../utils/whatsapp";
+
+type Course = {
+  id: string;
+  title: string;
+  instructor: string;
+  instructorInitials: string;
+  price: string;
+  rating: string;
+  reviews: number;
+  image: string;
+};
+
+const courses: Course[] = [
+  {
+    id: "executive-presence",
+    title: "Executive Presence",
+    instructor: "Dr. Amara Okafor",
+    instructorInitials: "AO",
+    price: "Enroll Now",
+    rating: "4.9",
+    reviews: 84,
+    image: "/MTA2.jpeg",
+  },
+  {
+    id: "public-speaking",
+    title: "Public Speaking Mastery",
+    instructor: "James Whitfield",
+    instructorInitials: "JW",
+    price: "Enroll Now",
+    rating: "4.8",
+    reviews: 112,
+    image: "/MTA.jpeg",
+  },
+  {
+    id: "storytelling",
+    title: "Storytelling for Leaders",
+    instructor: "Sarah Chen",
+    instructorInitials: "SC",
+    price: "₦58,000",
+    rating: "4.9",
+    reviews: 67,
+    image: "/MTA2.jpeg",
+  },
+];
+
+const CoursesSection: React.FC = () => {
+  return (
+    <section className="py-24 bg-[#fdfbf9]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-12">
+          <span className="inline-block py-1 px-3 rounded-full bg-violet-100 text-[#6200EE] text-xs font-bold uppercase tracking-wider mb-2">
+            Our Course
+          </span>
+          <h2 className="font-slab text-4xl font-bold uppercase tracking-wide text-gray-900">
+            Explore Our Courses
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {courses.map((course) => (
+            <div
+              key={course.id}
+              className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-xl transition-shadow border border-gray-100 flex flex-col h-full"
+            >
+              <div className="relative h-48 rounded-xl overflow-hidden mb-4 bg-gray-100">
+                <img
+                  alt={course.title}
+                  className="w-full h-full object-cover"
+                  src={course.image}
+                />
+              </div>
+
+              <div className="flex items-center gap-1 text-yellow-400 text-sm mb-2">
+                <span>★</span>
+                <span className="text-gray-700 font-medium">{course.rating}</span>
+                <span className="text-gray-400">({course.reviews})</span>
+              </div>
+
+              <h3 className="font-bold text-lg text-gray-900 mb-4 line-clamp-2 flex-grow">
+                {course.title}
+              </h3>
+
+              <div className="flex items-center justify-between border-t border-gray-100 pt-4 mt-auto">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-[#6200EE] text-white text-xs font-bold flex items-center justify-center">
+                    {course.instructorInitials}
+                  </div>
+                  <span className="text-sm font-medium text-gray-600">
+                    {course.instructor}
+                  </span>
+                </div>
+                <span className="font-bold text-[#6200EE]">{course.price}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex justify-center">
+          <PillArrowButton href={whatsappLink("seeAllCourses")} external variant="purple">
+            See All Courses
+          </PillArrowButton>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CoursesSection;

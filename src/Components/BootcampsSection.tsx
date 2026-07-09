@@ -171,9 +171,13 @@ const BootcampSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         
         {/* HEADER */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 px-2">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#7C4DFF] mb-4">
-            Fast-Track Bootcamps
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 px-2 space-y-3">
+          <p className="text-violet-400 font-bold uppercase text-xs tracking-[0.2em]">
+            Weekend Intensives
+          </p>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#7C4DFF] tracking-tight">
+            Fast-Track{" "}
+            <span className="italic text-white">Bootcamps</span>
           </h2>
           <p className="text-gray-300 text-sm sm:text-lg">
             High-intensity weekends designed for immediate impact.

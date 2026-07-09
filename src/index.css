@@ -1,11 +1,102 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background-color: #fdfbf9;
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.bg-gradient-hero {
+  background: linear-gradient(
+    135deg,
+    #f3e8ff 0%,
+    #faf5ff 35%,
+    #fdf8f5 70%,
+    #fdfbf9 100%
+  );
+}
+
+.hero-shell {
+  background: linear-gradient(
+    135deg,
+    #f3e8ff 0%,
+    #faf5ff 35%,
+    #fdf8f5 70%,
+    #fdfbf9 100%
+  );
+}
+
+.hero-bottom-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: linear-gradient(to bottom, transparent 0%, #fdfbf9 100%);
+  pointer-events: none;
+  z-index: 15;
+}
+
+.hero-image-mask {
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+}
+
+.hero-rings {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-rings::before,
+.hero-rings::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(98, 0, 238, 0.08);
+}
+
+.hero-rings::before {
+  width: 420px;
+  height: 420px;
+}
+
+.hero-rings::after {
+  width: 520px;
+  height: 520px;
+  border-color: rgba(98, 0, 238, 0.05);
+}
+
+.hero-shape-bg {
+  background-image: radial-gradient(circle at 30% 30%, #e9d5ff 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, #ddd6fe 0%, transparent 45%);
+}
+
+.font-slab {
+  font-family: "Roboto Slab", "Courier New", Georgia, serif;
+  letter-spacing: 0.04em;
 }
 
 .app-loader {
@@ -154,4 +245,27 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s ease-out both;
+}
+
+.animate-fade-up-delay-1 {
+  animation: fadeUp 0.8s ease-out 0.15s both;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fadeUp 0.8s ease-out 0.3s both;
 }

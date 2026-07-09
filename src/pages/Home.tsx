@@ -1,13 +1,15 @@
 import AboutSection from "../Components/AboutSection";
-import BootcampsSection from "../Components/BootcampsSection";
-import CohortSection from "../Components/CohortSection";
+import CategoriesSection from "../Components/CategoriesSection";
+import ChoosePathSection from "../Components/ChoosePathSection";
+import CoachesSection from "../Components/CoachesSection";
+import CoursesSection from "../Components/CoursesSection";
 import CTASection from "../Components/CTASection";
 import HeroSection from "../Components/HeroSection";
 import TestimonialSection from "../Components/TestimonialSection";
 
 export default function Home() {
   return (
-    <div className="pt-[108px] bg-gradient-to-b from-white via-violet-50/30 to-white">
+    <main className="bg-[#fdfbf9] text-gray-800 antialiased overflow-x-hidden">
       <section id="hero">
         <HeroSection />
       </section>
@@ -16,20 +18,29 @@ export default function Home() {
         <AboutSection />
       </section>
 
-      <section id="cohorts">
-        <CohortSection />
+      <section id="courses">
+        <CoursesSection />
       </section>
 
-      <section id="bootcamps">
-        <BootcampsSection />
+      <section id="coaches">
+        <CoachesSection />
       </section>
 
-      <section id="testimonials" className="bg-white">
+      <section id="choose-path">
+        <ChoosePathSection />
+      </section>
+
+      <section id="categories">
+        <CategoriesSection />
+      </section>
+
+      <section id="testimonials">
         <TestimonialSection />
       </section>
-        <section id="cta">
+
+      <section id="cta">
         <CTASection />
       </section>
-    </div>
+    </main>
   );
 }
