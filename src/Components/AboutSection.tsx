@@ -35,7 +35,7 @@ const AboutSection: React.FC = () => {
 
         <h2 className="font-slab text-3xl md:text-4xl font-bold mb-12 text-gray-900 leading-tight uppercase tracking-wide">
           We are passionate about empowering learners worldwide with
-          high-quality, accessible communication coaching. Our mission is to
+          high-quality and accessible communication coaching. Our mission is to
           transform raw potential into clarity, confidence, and commanding
           presence.
         </h2>
