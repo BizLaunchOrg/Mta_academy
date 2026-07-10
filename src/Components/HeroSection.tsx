@@ -97,7 +97,7 @@ export default function HeroSection() {
             <div className="absolute inset-0 hero-shape-bg opacity-60 z-[2] rounded-full scale-90" />
 
             <img
-              src="/MTA2.jpeg"
+              src="/hero-portrait.png"
               alt="MTA Academy hero"
               className="relative z-10 w-full max-w-md object-contain drop-shadow-2xl rounded-3xl hero-image-mask translate-y-4 lg:translate-y-0"
             />
