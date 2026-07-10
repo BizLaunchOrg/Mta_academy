@@ -7,7 +7,6 @@ import { whatsappLink } from "../utils/whatsapp";
 type Coach = {
   id: string;
   name: string;
-  focus: string[];
   image: string;
 };
 
@@ -15,19 +14,16 @@ const coaches: Coach[] = [
   {
     id: "coach-1",
     name: "Moridiyah Temitope Abdulquadri",
-    focus: ["Executive Presence", "Leadership", "Cohort Programs"],
     image: "/coach-1.jpeg",
   },
   {
     id: "coach-2",
     name: "Rahmat Abisola Alade",
-    focus: ["Storytelling", "Persuasive Influence", "Brand Narrative"],
     image: "/coach-2.jpeg",
   },
   {
     id: "coach-3",
     name: "Kelvin Chukwuemeke Osadebe",
-    focus: ["Public Speaking", "Pitch Delivery", "Weekend Intensives"],
     image: "/coach-3.jpeg",
   },
 ];
@@ -59,20 +55,10 @@ const CoachesSection: React.FC = () => {
                 />
               </div>
 
-              <div className="p-5 text-center space-y-3">
+              <div className="p-5 text-center">
                 <h3 className="text-lg font-bold text-gray-900 leading-snug">
                   {coach.name}
                 </h3>
-                <div className="flex flex-wrap gap-2 justify-center pt-1">
-                  {coach.focus.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs font-medium bg-violet-50 text-[#6200EE] px-3 py-1 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </div>
             </article>
           ))}

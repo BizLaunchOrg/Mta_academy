@@ -68,22 +68,17 @@ const Footer: React.FC = () => {
             <ul className="space-y-3 text-sm text-gray-600">
               <li>
                 <a href="#categories" className="hover:text-[#6200EE] transition-colors">
-                  Executive Communication
-                </a>
-              </li>
-              <li>
-                <a href="#categories" className="hover:text-[#6200EE] transition-colors">
                   Public Speaking
                 </a>
               </li>
               <li>
                 <a href="#categories" className="hover:text-[#6200EE] transition-colors">
-                  Storytelling
+                  Communication Strategy
                 </a>
               </li>
               <li>
                 <a href="#categories" className="hover:text-[#6200EE] transition-colors">
-                  Negotiation & Influence
+                  Diction
                 </a>
               </li>
             </ul>
